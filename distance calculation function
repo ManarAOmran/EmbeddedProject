@@ -1,0 +1,26 @@
+#include <stdio.h>
+#include <math.h>
+#define ConversionFactor 111194.93  // = pi/180 *radius of earth:6371* 10^3 m --> to convert from degrees to meters 
+
+int main()
+{
+	double lat1, long1, lat2, long2;
+       // here we will take the values from the gps module
+       // the following values are example to test the code
+	      lat1= 30.063922552774475 ;
+        long1= 31.277587996170652;
+        lat2= 30.06419183056717;
+        long2= 31.282566176069867;
+
+
+	lat1 = lat1 * ConversionFactor;
+	long1 = long1 * ConversionFactor;
+	lat2 = lat2 * ConversionFactor;
+	long2 = long2 * ConversionFactor;
+	 
+	double distance;
+	distance = fabs(lat1 - lat2) +fabs(long1 - long2);  //Manhattan distance
+
+	printf("distance taken = %lf \n", distance);
+	return 0;
+}
