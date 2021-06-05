@@ -1,0 +1,10 @@
+void PORTB_INIT(void) {
+    volatile unsigned long delay;
+    SYSCTL_RCGC2_R |= 0X00000002;   // allow the clock for portB
+    delay = SYSCTL_RCGC2_R;     // short delay for clock
+    GPIO_PORTB_AFSEL_R &= ~0xFF;    //disable alternative functions for portB
+    GPIO_PORTB_AMSEL_R &= ~0XFF;    //disable analogue function
+    GPIO_PORTB_PCTL_R &= ~0XFF;     //regular digital pins
+    GPIO_PORTB_DIR_R  |= 0XFF;      //set the direction of PB0-7 as     output
+    GPIO_PORTB_DEN_R  |= 0XFF;      //enable digital portB
+    }
