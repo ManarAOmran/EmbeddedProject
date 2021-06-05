@@ -1,0 +1,9 @@
+    void PORTE_INIT(void) {
+    SYSCTL_RCGCGPIO_R |= 0x10  
+    while ((SYSCTL_PRGPIO_R&0x10)==0){};
+    GPIO_PORTE_DEN_R |= 0x30;      /* set PE4 and PE5 as digital */
+    GPIO_PORTE_DIR_R |= 0x30;
+    GPIO_PORTE_AFSEL_R |= 0x30;    /* Use PE4,PE5 alternate function */
+    GPIO_PORTE_AMSEL_R = 0;    /* Turn off analog function*/
+    GPIO_PORTE_PCTL_R = 0x00110000;     /* configure PE4 and PE5 for UART */
+    }
